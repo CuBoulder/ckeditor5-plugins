@@ -16,14 +16,14 @@ export default class InvisibleEditing extends Plugin {
 		const schema = this.editor.model.schema;
     	// Extend the text node's schema to accept the tooltip attribute.
 		schema.register( 'ucb-invisible', {
-			allowAttributes: [ 'ucb-invisible' ]
+			isContent: true
 		} );
 	}
 	_defineConverters() {
 		const conversion = this.editor.conversion;
 		
         // Conversion from a model attribute to a view element
-		conversion.for( 'dataDowncast' ).attributeToElement( {
+		conversion.for( 'downcast' ).attributeToElement( {
 			model: 'ucb-invisible',
 
             // Callback function provides access to the model attribute value
@@ -36,7 +36,10 @@ export default class InvisibleEditing extends Plugin {
 
 		// Conversion from a view element to a model attribute
 		conversion.for( 'upcast' ).elementToElement( {
-			model: 'ucb-invisible',
+			model: {
+				key: 'ucb-invisible',
+				value: false
+			},
 			view: {
 				name: 'span',
 				classes:  'sr-only'

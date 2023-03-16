@@ -1,4 +1,5 @@
-/* Admin Css is for the admin toolbar on the COnfig side */
+/* Admin Css is for the admin toolbar on the Config side */
 .ckeditor5-toolbar-button-Invisible {
-  background-image: url(../icons/eye-slash-solid.svg);
+  background-image: url(../icons/invisible.svg);
 }
+

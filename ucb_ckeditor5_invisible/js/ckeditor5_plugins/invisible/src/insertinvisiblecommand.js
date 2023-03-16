@@ -3,16 +3,6 @@ import { Command } from 'ckeditor5/src/core';
 
 
 export default class InvisibleCommand extends Command {
-  execute() {
-    const { model } = this.editor;
-
-    model.change((writer) => {
-      // Insert <simpleBox>*</simpleBox> at the current selection position
-      // in a way that will result in creating a valid model structure.
-      model.insertContent(addInvisible(writer));
-    });
-  }
-
   refresh() {
     const { model } = this.editor;
     const { selection } = model.document;
@@ -29,17 +19,16 @@ export default class InvisibleCommand extends Command {
     // null so the addition doesn't happen.
     this.isEnabled = allowedIn !== null;
   }
-}
 
-function addInvisible(writer) {
-  // Create instances of the three elements registered with the editor in
-  // simpleboxediting.js.
-  const invisible = writer.createElement('ucb-invisible');
+  execute() {
+    const { model } = this.editor;
+    const {selection } = this.document;
 
-  // Append the title and description elements to the simpleBox, which matches
-  // the parent/child relationship as defined in their schemas.
-  writer.append(invisible);
+    model.change((writer) => {
+      // Insert <simpleBox>*</simpleBox> at the current selection position
+      // in a way that will result in creating a valid model structure.
+      model.insertContent(addInvisible(writer));
+    });
+  }
 
-  // Return the element to be added to the editor.
-  return invisible;
 }
