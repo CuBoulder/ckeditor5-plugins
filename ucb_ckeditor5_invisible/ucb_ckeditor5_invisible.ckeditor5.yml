@@ -13,7 +13,6 @@ ucb_ckeditor5_invisible_invisible:
   # Configuration that will be sent to CKEditor 5 JavaScript plugins.
   ckeditor5:
     plugins:
-    # folder . pluginName
       - invisible.Invisible
     # *Additional configuration properties*
     # config: data sent to the constructor of any CKEditor 5 plugin
@@ -35,7 +34,6 @@ ucb_ckeditor5_invisible_invisible:
     # If the plugin does not provide elements, set this as
     # `elements: false`
     elements:
-      - <span>
       - <span class='sr-only'>
     # *Additional configuration properties*
     # conditions: for setting additional criteria that must be met for the
