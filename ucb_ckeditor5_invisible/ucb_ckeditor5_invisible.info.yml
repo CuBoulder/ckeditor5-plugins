@@ -1,0 +1,9 @@
+# This has 'change-this-to-info' in the filename instead of 'info' so this
+# template isn't discovered as a module.
+name: CKEditor5 Invisible
+type: module
+description: "Hides content from displaying on the screen in a way that can still be read by a screenreader."
+package: CKEditor 5
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:ckeditor5
