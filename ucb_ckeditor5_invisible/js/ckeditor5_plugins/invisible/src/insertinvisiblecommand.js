@@ -3,11 +3,12 @@
  * toolbar button is pressed.
  */
 // cSpell:ignore simpleboxeditingimport { Command } from 'ckeditor5/src/core';
+import { Command } from 'ckeditor5/src/core';
 
 
 export default class InvisibleCommand extends Command {
   execute() {
-    const { model } = this.editor;
+    const  model  = this.editor.model;
 
     model.change((writer) => {
       // Insert <simpleBox>*</simpleBox> at the current selection position
@@ -17,8 +18,8 @@ export default class InvisibleCommand extends Command {
   }
 
   refresh() {
-    const { model } = this.editor;
-    const { selection } = model.document;
+    const model = this.editor.model;
+    const selection = model.document.selection;
 
     // Determine if the cursor (selection) is in a position where adding a
     // Invisible is permitted. This is based on the schema of the model(s)

@@ -21,4 +21,8 @@ import InvisibleUI from './invisibleui';
     static get requires() {
       return [ InvisibleEditing, InvisibleUI ];
     }
+
+    static get pluginName() {
+      return 'ucb-invisible';
+    }
   }

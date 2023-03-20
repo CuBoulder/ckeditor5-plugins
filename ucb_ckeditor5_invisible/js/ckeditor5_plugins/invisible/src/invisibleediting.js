@@ -1,5 +1,6 @@
 import { Plugin } from 'ckeditor5/src/core';
 import InvisibleCommand from './insertinvisiblecommand';
+import { Widget } from 'ckeditor5/src/widget';
 
 export default class InvisibleEditing extends Plugin {
 	static get requires() {

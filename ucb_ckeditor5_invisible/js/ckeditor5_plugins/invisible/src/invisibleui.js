@@ -7,7 +7,6 @@ import invisibleIcon from '../../../../icons/invisible.svg'
 export default class InvisibleUI extends Plugin {
 	init() {
 		const editor = this.editor;
-		const t = editor.t;
 
 		// Add strikethrough button to feature components.
 		editor.ui.componentFactory.add( 'invisible', () => {
@@ -18,6 +17,11 @@ export default class InvisibleUI extends Plugin {
 			button.icon = invisibleIcon;
 			button.tooltip = true;
 			button.withText = true;
+
+			// Execute the command when the button is clicked (executed).
+			this.listenTo(button, 'execute', () =>
+				editor.execute('addInvisible'),
+			);
 
 			return button;
 		} );
