@@ -8,12 +8,13 @@ import { Command } from 'ckeditor5/src/core';
 
 export default class InvisibleCommand extends Command {
   execute() {
-    const  model  = this.editor.model;
+    const model = this.editor.model;
 
-    model.change((writer) => {
-      // Insert <simpleBox>*</simpleBox> at the current selection position
+    model.change(writer => {
+      // Insert <ucb-invisible>*</ucb-invisible> at the current selection position
       // in a way that will result in creating a valid model structure.
-      model.insertContent(addInvisible(writer));
+      const invisible = addInvisible(writer);
+      model.insertContent(invisible, model.document.selection);
     });
   }
 
@@ -26,24 +27,21 @@ export default class InvisibleCommand extends Command {
     // currently containing the cursor.
     const allowedIn = model.schema.findAllowedParent(
       selection.getFirstPosition(),
-      'ucb-invisible',
+      'ucb-invisible'
     );
 
-    // If the cursor is not in a location where a simpleBox can be added, return
+    // If the cursor is not in a location where a ucb-invisible can be added, return
     // null so the addition doesn't happen.
     this.isEnabled = allowedIn !== null;
   }
 }
 
 function addInvisible(writer) {
-  // Create instances of the three elements registered with the editor in
-  // simpleboxediting.js.
-  const invisible = writer.createElement('ucb-invisible');
+  // Create instances of the element registered with the editor.
 
-  // Append the title and description elements to the simpleBox, which matches
-  // the parent/child relationship as defined in their schemas.
-  writer.append(invisible);
+  const invisible = writer.createElement('ucb-invisible');
 
   // Return the element to be added to the editor.
   return invisible;
 }
+

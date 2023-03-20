@@ -10,7 +10,7 @@ export default class InvisibleUI extends Plugin {
 
 		// Add strikethrough button to feature components.
 		editor.ui.componentFactory.add( 'invisible', () => {
-	
+			const command = editor.commands.get('addInvisible')
 			const button = new ButtonView();
 
 			button.label = 'Invisible';
@@ -18,6 +18,8 @@ export default class InvisibleUI extends Plugin {
 			button.tooltip = true;
 			button.withText = true;
 
+
+			button.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled');
 			// Execute the command when the button is clicked (executed).
 			this.listenTo(button, 'execute', () =>
 				editor.execute('addInvisible'),
