@@ -23,3 +23,9 @@
 .ck.ck-invisible-form .ck-button:nth-of-type(2) {
 	grid-area: 3 / 2 / 4 / 3;
 }
+
+
+.ck-content > span {
+	color: grey;
+	text-decoration: underline dotted;
+  }
