@@ -2,6 +2,7 @@
 // Also handles the format and display during editing
 import { Plugin } from 'ckeditor5/src/core';
 import { ButtonView } from 'ckeditor5/src/ui';
+import audioIcon from '../../../../icons/audiodescription.svg'
 import invisibleIcon from '../../../../icons/invisible.svg'
 
 export default class InvisibleUI extends Plugin {
@@ -14,9 +15,9 @@ export default class InvisibleUI extends Plugin {
 			const button = new ButtonView();
 
 			button.label = 'Invisible';
-			button.icon = invisibleIcon;
+			button.icon = audioIcon;
 			button.tooltip = true;
-			button.withText = true;
+			button.withText = false;
 
 
 			button.bind('isOn', 'isEnabled').to(command, 'value', 'isEnabled');
