@@ -3,7 +3,6 @@
 import { Plugin } from 'ckeditor5/src/core';
 import { ButtonView } from 'ckeditor5/src/ui';
 import audioIcon from '../../../../icons/audiodescription.svg'
-import invisibleIcon from '../../../../icons/invisible.svg'
 
 export default class InvisibleUI extends Plugin {
 	init() {
